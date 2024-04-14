@@ -1,0 +1,17 @@
+import string
+
+def find_max_length(filename):
+    with open(filename, "r") as f:
+        data = f.readlines()
+    names = []
+    for line in data:
+        name = line.strip().split(",")[0].lower()
+        if all(c in string.ascii_lowercase for c in name):
+            names.append(name)
+    max_len = max(len(name) for name in names)
+    return max_len
+
+if __name__ == "__main__":
+    filename = "yob2018.txt"  # Replace with the actual filename
+    max_len = find_max_length(filename)
+    print(f"The maximum length of the names in the data is {max_len}.")
